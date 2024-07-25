@@ -12,7 +12,7 @@ resource "azurerm_service_plan" "example" {
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
   sku_name            = "B1"  # Plan de niveau Basic
-  os_type             = "Windows"
+  os_type             = "Linux"
 }
 
 resource "azurerm_windows_web_app" "example" {

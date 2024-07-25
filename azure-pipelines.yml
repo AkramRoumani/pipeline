@@ -11,7 +11,7 @@ steps:
 
 - task: AzureCLI@2
   inputs:
-    azureSubscription: 'azure-service-connection'  
+    azureSubscription: 'azure-service-connection'  # Utilisez le nom de votre connexion de service
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: 'az login --service-principal -u $(ARM_CLIENT_ID) -p $(ARM_CLIENT_SECRET) --tenant $(ARM_TENANT_ID)'
@@ -39,5 +39,5 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
       # Get the app service default hostname
-      hostname=$(az webapp show --resource-group example-resources --name example-appservice --query defaultHostName -o tsv)
+      hostname=$(az webapp show --resource-group example-resources --name example-appservice-unique-1234 --query defaultHostName -o tsv)
       echo "App Service URL: http://$hostname"

@@ -29,6 +29,10 @@ steps:
   displayName: 'Terraform Import Service Plan'
 
 - script: |
+    terraform import azurerm_linux_web_app.example /subscriptions/229dc9f9-5b23-47e2-8853-f099755e0d70/resourceGroups/example-resources/providers/Microsoft.Web/sites/example-appservice-unique-1234 || echo "Resource already imported"
+  displayName: 'Terraform Import Web App'
+
+- script: |
     terraform plan -out=tfplan
   displayName: 'Terraform Plan'
 
@@ -45,6 +49,5 @@ steps:
       # Get the app service default hostname
       hostname=$(az webapp show --resource-group example-resources --name example-appservice-unique-1234 --query defaultHostName -o tsv)
       echo "App Service URL: http://$hostname"
-
 
 

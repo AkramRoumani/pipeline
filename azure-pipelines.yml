@@ -1,0 +1,22 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: TerraformInstaller@0
+  inputs:
+    terraformVersion: '1.0.11' # Spécifiez la version de Terraform que vous souhaitez utiliser
+
+- script: |
+    terraform init
+  displayName: 'Terraform Init'
+
+- script: |
+    terraform plan -out=tfplan
+  displayName: 'Terraform Plan'
+
+- script: |
+    terraform apply -auto-approve tfplan
+  displayName: 'Terraform Apply'

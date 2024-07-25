@@ -22,6 +22,15 @@ resource "azurerm_windows_web_app" "example" {
   service_plan_id     = azurerm_service_plan.example.id
 
   site_config {
-    app_command_line = "echo 'Hello World' > /home/site/wwwroot/index.html"
+    default_documents = ["index.html"]
+    scm_type          = "None"
+  }
+
+  app_settings = {
+    "WEBSITE_RUN_FROM_PACKAGE" = "1"
+  }
+
+  tags = {
+    environment = "Terraform"
   }
 }

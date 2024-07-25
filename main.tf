@@ -23,7 +23,6 @@ resource "azurerm_windows_web_app" "example" {
 
   site_config {
     default_documents = ["index.html"]
-    scm_type          = "None"
   }
 
   app_settings = {
@@ -34,3 +33,4 @@ resource "azurerm_windows_web_app" "example" {
     environment = "Terraform"
   }
 }
+

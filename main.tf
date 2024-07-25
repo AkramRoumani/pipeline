@@ -32,6 +32,13 @@ resource "azurerm_linux_web_app" "example" {
   tags = {
     environment = "Terraform"
   }
+
+  lifecycle {
+    ignore_changes = [
+      app_settings["WEBSITE_RUN_FROM_PACKAGE"]
+    ]
+  }
 }
+
 
 

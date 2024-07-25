@@ -21,9 +21,14 @@ steps:
   displayName: 'Terraform Init'
 
 - script: |
+    terraform import azurerm_resource_group.example /subscriptions/229dc9f9-5b23-47e2-8853-f099755e0d70/resourceGroups/example-resources || echo "Resource already imported"
+  displayName: 'Terraform Import'
+
+- script: |
     terraform plan -out=tfplan
   displayName: 'Terraform Plan'
 
 - script: |
     terraform apply -auto-approve tfplan
   displayName: 'Terraform Apply'
+

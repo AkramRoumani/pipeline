@@ -22,7 +22,11 @@ steps:
 
 - script: |
     terraform import azurerm_resource_group.example /subscriptions/229dc9f9-5b23-47e2-8853-f099755e0d70/resourceGroups/example-resources || echo "Resource already imported"
-  displayName: 'Terraform Import'
+  displayName: 'Terraform Import Resource Group'
+
+- script: |
+    terraform import azurerm_service_plan.example /subscriptions/229dc9f9-5b23-47e2-8853-f099755e0d70/resourceGroups/example-resources/providers/Microsoft.Web/serverFarms/example-appserviceplan || echo "Resource already imported"
+  displayName: 'Terraform Import Service Plan'
 
 - script: |
     terraform plan -out=tfplan

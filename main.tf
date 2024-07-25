@@ -25,4 +25,3 @@ resource "azurerm_windows_web_app" "example" {
     app_command_line = "echo 'Hello World' > /home/site/wwwroot/index.html"
   }
 }
-

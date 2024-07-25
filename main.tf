@@ -11,11 +11,8 @@ resource "azurerm_service_plan" "example" {
   name                = "example-appserviceplan"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
-  sku {
-    tier = "Basic"
-    size = "B1"
-  }
-  os_type = "Linux"
+  sku_name            = "B1"
+  os_type             = "Linux"
 }
 
 resource "azurerm_linux_web_app" "example" {
@@ -36,3 +33,5 @@ resource "azurerm_linux_web_app" "example" {
     environment = "Terraform"
   }
 }
+
+
